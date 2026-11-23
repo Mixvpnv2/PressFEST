@@ -19,15 +19,11 @@ local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
 -- ScreenGui.Parent = CoreGui;
 
 local ScreenGui = Instance.new('ScreenGui');
+ScreenGui.Name = game:GetService("HttpService"):GenerateGUID(false);
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 
-if gethui then
-    ScreenGui.Parent = gethui();
-else
-    ProtectGui(ScreenGui);
-    ScreenGui.Parent = CoreGui;
-end
-
+ProtectGui(ScreenGui);
+ScreenGui.Parent = CoreGui;
 
 local Toggles = {};
 local Options = {};
