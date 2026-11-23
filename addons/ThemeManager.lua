@@ -1,4 +1,5 @@
-local httpService = game:GetService('HttpService')
+local cloneref = cloneref or function(obj) return obj end
+local httpService = cloneref(game:GetService('HttpService'))
 local ThemeManager = {} do
 	ThemeManager.Folder = 'CatteStateSl'
 	-- if not isfolder(ThemeManager.Folder) then makefolder(ThemeManager.Folder) end
