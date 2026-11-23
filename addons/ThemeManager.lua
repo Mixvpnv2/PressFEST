@@ -13,7 +13,7 @@ local ThemeManager = {} do
 		['Tokyo Night'] 	= { 6, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"191925","AccentColor":"6759b3","BackgroundColor":"16161f","OutlineColor":"323232","GlowColor":"6759b3"}') },
 		['Ubuntu'] 			= { 7, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"3e3e3e","AccentColor":"e2581e","BackgroundColor":"323232","OutlineColor":"191919","GlowColor":"e2581e"}') },
 		['Quartz'] 			= { 8, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"232330","AccentColor":"426e87","BackgroundColor":"1d1b26","OutlineColor":"27232f","GlowColor":"426e87"}') },
-		['Green idk protogen'] 			= { 9, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"172017","AccentColor":"659c62","BackgroundColor":"1b271d","OutlineColor":"44744e","GlowColor":"659c62"}') },
+		['Green'] 			= { 9, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"172017","AccentColor":"659c62","BackgroundColor":"1b271d","OutlineColor":"44744e","GlowColor":"659c62"}') },
 		['Black Mini'] 			= { 10, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"0d0c0c","AccentColor":"333437","BackgroundColor":"0d0c0c","OutlineColor":"343434","GlowColor":"000000"}') },
 	}
 
@@ -52,7 +52,7 @@ local ThemeManager = {} do
 	end
 
 	function ThemeManager:LoadDefault()		
-		local theme = 'Tokyo Night'
+		local theme = 'Default'
 		local content = isfile(self.Folder .. '/themes/default.txt') and readfile(self.Folder .. '/themes/default.txt')
 
 		local isDefault = true
@@ -185,7 +185,6 @@ local ThemeManager = {} do
 		for i = 1, #list do
 			local file = list[i]
 			if file:sub(-5) == '.json' then
-				-- i hate this but it has to be done ...
 
 				local pos = file:find('.json', 1, true)
 				local char = file:sub(pos, pos)
