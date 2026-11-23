@@ -12,11 +12,22 @@ local Mouse = LocalPlayer:GetMouse();
 
 local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
 
-local ScreenGui = Instance.new('ScreenGui');
-ProtectGui(ScreenGui);
+-- local ScreenGui = Instance.new('ScreenGui');
+-- ProtectGui(ScreenGui);
 
+-- ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
+-- ScreenGui.Parent = CoreGui;
+
+local ScreenGui = Instance.new('ScreenGui');
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
-ScreenGui.Parent = CoreGui;
+
+if gethui then
+    ScreenGui.Parent = gethui();
+else
+    ProtectGui(ScreenGui);
+    ScreenGui.Parent = CoreGui;
+end
+
 
 local Toggles = {};
 local Options = {};
