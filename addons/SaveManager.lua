@@ -1,4 +1,7 @@
-local httpService = game:GetService('HttpService')
+local cloneref = cloneref or function(obj) return obj end
+local httpService = cloneref(game:GetService('HttpService'))
+
+-- local httpService = game:GetService('HttpService')
 
 local SaveManager = {} do
 	SaveManager.Folder = 'CatteStateSl'
@@ -133,7 +136,7 @@ local SaveManager = {} do
 
 	function SaveManager:IgnoreThemeSettings()
 		self:SetIgnoreIndexes({ 
-			"BackgroundColor", "MainColor", "AccentColor", "OutlineColor", "FontColor", "GlowColor",
+			"BackgroundColor", "MainColor", "AccentColor", "OutlineColor", "FontColor",
 			"ThemeManager_ThemeList", 'ThemeManager_CustomThemeList', 'ThemeManager_CustomThemeName',
 		})
 	end
