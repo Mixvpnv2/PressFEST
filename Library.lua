@@ -1,14 +1,29 @@
-local InputService = game:GetService('UserInputService');
-local TextService = game:GetService('TextService');
-local CoreGui = game:GetService('CoreGui');
-local Teams = game:GetService('Teams');
-local Players = game:GetService('Players');
-local GuiService = game:GetService('GuiService');
-local RunService = game:GetService('RunService')
-local TweenService = game:GetService('TweenService');
+local cloneref = cloneref or function(obj) return obj end;
+
+local InputService = cloneref(game:GetService('UserInputService'));
+local TextService = cloneref(game:GetService('TextService'));
+local CoreGui = cloneref(game:GetService('CoreGui'));
+local Teams = cloneref(game:GetService('Teams'));
+local Players = cloneref(game:GetService('Players'));
+local GuiService = cloneref(game:GetService('GuiService'));
+local RunService = cloneref(game:GetService('RunService'));
+local TweenService = cloneref(game:GetService('TweenService'));
+
 local RenderStepped = RunService.RenderStepped;
-local LocalPlayer = Players.LocalPlayer;
+local LocalPlayer = cloneref(Players.LocalPlayer);
 local Mouse = LocalPlayer:GetMouse();
+
+--[[ local InputService = game:GetService('UserInputService');
+-- local TextService = game:GetService('TextService');
+-- local CoreGui = game:GetService('CoreGui');
+-- local Teams = game:GetService('Teams');
+-- local Players = game:GetService('Players');
+-- local GuiService = game:GetService('GuiService');
+-- local RunService = game:GetService('RunService')
+-- local TweenService = game:GetService('TweenService');
+-- local RenderStepped = RunService.RenderStepped;
+-- local LocalPlayer = Players.LocalPlayer;
+-- local Mouse = LocalPlayer:GetMouse(); ]]
 
 local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
 
@@ -22,8 +37,12 @@ local ScreenGui = Instance.new('ScreenGui');
 ScreenGui.Name = game:GetService("HttpService"):GenerateGUID(false);
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 
-ProtectGui(ScreenGui);
-ScreenGui.Parent = CoreGui;
+if gethui then
+    ScreenGui.Parent = gethui();
+else
+    ProtectGui(ScreenGui);
+    ScreenGui.Parent = CoreGui;
+end
 
 local Toggles = {};
 local Options = {};
